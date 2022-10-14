@@ -65,15 +65,12 @@ bool skip_warmup_;
 bool save_to_file_;
 std::ofstream savefile;
 
-Point2f projectPointDist(cv::Point3f pt_cv, const Mat intrinsics,
-                         const Mat distCoeffs) {
+Point2f projectPointDist(cv::Point3f pt_cv, const Mat intrinsics, const Mat distCoeffs) {
   // Project a 3D point taking into account distortion
   vector<Point3f> input{pt_cv};
   vector<Point2f> projectedPoints;
-  projectedPoints.resize(
-      1);  // TODO: Do it batched? (cv::circle is not batched anyway)
-  projectPoints(input, Mat::zeros(3, 1, CV_64FC1), Mat::zeros(3, 1, CV_64FC1),
-                intrinsics, distCoeffs, projectedPoints);
+  projectedPoints.resize(1);  // TODO: Do it batched? (cv::circle is not batched anyway)
+  projectPoints(input, Mat::zeros(3, 1, CV_64FC1), Mat::zeros(3, 1, CV_64FC1), intrinsics, distCoeffs, projectedPoints);
   return projectedPoints[0];
 }
 
@@ -540,14 +537,14 @@ int main(int argc, char **argv) {
 
   nh.param("delta_width_circles", delta_width_circles_, 0.5);
   nh.param("delta_height_circles", delta_height_circles_, 0.4);
-  nh_.param("marker_size", marker_size_, 0.20);
-  nh_.param("delta_width_qr_center_", delta_width_qr_center_, 0.55);
-  nh_.param("delta_height_qr_center_", delta_height_qr_center_, 0.35);
+  nh_.param("marker_size", marker_size_, 0.164);
+  nh_.param("delta_width_qr_center_", delta_width_qr_center_, 0.548);
+  nh_.param("delta_height_qr_center_", delta_height_qr_center_, 0.348);
   nh_.param("min_detected_markers", min_detected_markers_, 3);
   nh_.param("cluster_tolerance", cluster_tolerance_, 0.05);
   nh_.param("min_cluster_factor", min_cluster_factor_, 2.0 / 3.0);
   nh_.param("skip_warmup", skip_warmup_, false);
-  nh_.param("save_to_file", save_to_file_, false);
+  nh_.param("save_to_file", save_to_file_, true);
   nh_.param("csv_name", csv_name, "mono_pattern_" + currentDateTime() + ".csv");
 
   string image_topic, cinfo_topic;
