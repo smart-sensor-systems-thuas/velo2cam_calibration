@@ -481,8 +481,10 @@ std:
   }
 
   if (DEBUG) {
-    cv::namedWindow("out", WINDOW_NORMAL);
-    cv::imshow("out", imageCopy);
+    cv::namedWindow("out", WINDOW_AUTOSIZE);
+    cv::Mat resizedCopy;
+    cv::resize(imageCopy, resizedCopy, Size(1024, 768), INTER_LINEAR);
+    cv::imshow("out", resizedCopy);
     cv::waitKey(1);
   }
 
