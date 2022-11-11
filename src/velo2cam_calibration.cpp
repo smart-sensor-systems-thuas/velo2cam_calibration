@@ -669,8 +669,8 @@ int main(int argc, char **argv) {
   nh_->param<bool>("sync_iterations", sync_iterations, false);
   nh_->param<bool>("save_to_file", save_to_file_, false);
   nh_->param<bool>("publish_tf", publish_tf_, true);
-  nh_->param<bool>("is_sensor2_cam", is_sensor2_cam, false);
-  nh_->param<bool>("is_sensor1_cam", is_sensor1_cam, false);
+  nh_->param<bool>("is_sensor2_cam", is_sensor2_cam, true);
+  nh_->param<bool>("is_sensor1_cam", is_sensor1_cam, true);
   nh_->param<bool>("skip_warmup", skip_warmup, false);
   nh_->param<bool>("single_pose_mode", single_pose_mode, false);
   nh_->param<bool>("results_every_pose", results_every_pose, false);
