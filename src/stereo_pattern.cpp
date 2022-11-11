@@ -22,7 +22,7 @@
 /*
   stereo_pattern: Find the circle centers in the stereo cloud
 */
-
+//comment so I can push again
 #define TARGET_NUM_CIRCLES 4
 
 #include <dynamic_reconfigure/server.h>
